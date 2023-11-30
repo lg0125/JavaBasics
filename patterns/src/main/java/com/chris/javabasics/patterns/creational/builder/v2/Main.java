@@ -3,23 +3,11 @@ package com.chris.javabasics.patterns.creational.builder.v2;
 public class Main {
     public static void main(String... args) {
 
-        // LAZY BUILDER
-        var builder = User.builder()
-                .name("Ben Weidig")
-                .email("ben@example.com");
-
-        var user = builder.addPermission("create")
-                .addPermission("edit")
-                .build();
-
-        System.out.println(user);
-
-
         // WITH BUILDER
         var user2 = UserWith.builder()
-                .with(with -> {
-                    with.email = "ben@example.com";
-                    with.name = "Ben Weidig";
+                .with(builder -> {
+                    builder.email = "ben@example.com";
+                    builder.name = "Ben Weidig";
                 })
                 .withPermissions(permissions -> {
                     permissions.add("create");

@@ -29,21 +29,6 @@ public record UserWith(
         // Collection-based types are better served by their own with methods.
         private final List<String> permissions = new ArrayList<>();
 
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder addPermission(String permission) {
-            this.permissions.add(permission);
-            return this;
-        }
-
         public Builder with(Consumer<Builder> builderFn) {
             builderFn.accept(this);
             return this;
@@ -55,9 +40,11 @@ public record UserWith(
         }
 
         public UserWith build() {
-            return new UserWith(this.email,
+            return new UserWith(
+                    this.email,
                     this.name,
-                    this.permissions);
+                    this.permissions
+            );
         }
     }
 
